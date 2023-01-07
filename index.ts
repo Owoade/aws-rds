@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const PORT = process.env.PORT ?? 5000;
+
 app.post("/create-user", async (req: Request, res: Response) => {
   const { name, email } = req.body;
   const newUser = await User.create({ name, email });
@@ -19,7 +20,7 @@ app.post("/create-user", async (req: Request, res: Response) => {
 });
 
 app.get("/get-all", async (req: Request, res: Response) => {
-    res.json( await User.findAll() )
+    res.json( await User.findAll())
 })
 
 db.authenticate().then(() =>
